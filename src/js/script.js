@@ -1,11 +1,11 @@
-const Player = (character,turn) =>{
-    this.character = character;
-    this.turn = turn;
-}
+const Player = ((name,character,turn) => {
+  { name, character, turn}
+});
 
-const GameData = () =>{
-    board:[0,1,2,3,4,5,6,7,8];
-}
+const GameData = (() =>{
+  let board = [null,null,null,null,null,null,null,null,null];
+  
+});
 
 const GameController = () => {
  let board = new GameData;
