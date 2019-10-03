@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="button-container">
-    <button class="start-game-btn">Start Game</button>
+    <button class="start-game-btn" onclick='getPlayerInfo()'>Start Game</button>
     <div class="player-info-container">
       <div class="player-info">
         <input type="text" id="name-player1" placeholder='Insert player name'>
@@ -19,7 +19,7 @@
         <input type="text" id="name-player2" placeholder='Insert player name'>
         <input type="text" id="char-player2" placeholder='Insert player character'>
       </div>
-      <button>Submit player info</button>
+      <button onclick="setPlayers()">Submit player info</button>
     </div>
   </div>
   <div class="game-container">

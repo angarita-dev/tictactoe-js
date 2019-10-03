@@ -2,6 +2,11 @@
 .game-container{
     width:500px;
     margin: 100px auto;
+    display: none;
+}
+
+.player-info-container{
+    display:none;
 }
 
 td{

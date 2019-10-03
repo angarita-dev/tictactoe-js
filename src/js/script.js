@@ -16,11 +16,6 @@ const GameController = () => {
 }
 
 
-function move(playerCharacter, position){
-    let position = document.getElementById("position");
-    board[position] = player.character;
-
-}
 
 function validMoves(){
 
@@ -28,4 +23,15 @@ function validMoves(){
 
 function gameStatus(){
 
+}
+
+function getPlayerInfo() {
+   document.getElementsByClassName("player-info-container")[0].style.display = 'block';
+}
+
+function setPlayers() {
+
+  document.getElementsByClassName("player-info-container")[0].style.display = 'none';
+  document.getElementsByClassName("game-container")[0].style.display = 'block';
+  
 }
