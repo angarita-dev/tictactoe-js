@@ -43,3 +43,19 @@ function decideTurn(player1, player2) {
 
 }
 
+function doMove(index, id) {
+
+if (board[index] == null) {
+  turn = decideTurn(player1, player2);
+  board[index] = turn.character;
+  document.getElementById(id).innerHTML = turn.character;
+  moveCount++;
+  if (moveCount == 9){
+    alert("gameOver");
+  }
+}else{
+  alert("cell occupied");
+}
+
+
+}
