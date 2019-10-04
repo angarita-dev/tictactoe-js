@@ -13,4 +13,7 @@
 project setup
 gameboard-player init
 game-playing
-game-wining
+game-termination
+
+
+

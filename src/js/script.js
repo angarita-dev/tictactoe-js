@@ -49,13 +49,31 @@ if (board[index] == null) {
   turn = decideTurn(player1, player2);
   board[index] = turn.character;
   document.getElementById(id).innerHTML = turn.character;
+ alert((board[0] == board[1])&&(board[1] == board[2]));
   moveCount++;
   if (moveCount == 9){
-    alert("gameOver");
+    return alert("gameOver");
   }
 }else{
   alert("cell occupied");
 }
+}
 
+function gameWin() {
+  if(
+    ( (board[3] == board[4])&&(board[4] == board[5]) )
+   )
+    /*
+    ((board[6] == board[7])&&(board[7] == board[8]))||
+    ((board[0] == board[3])&&(board[3] == board[6]))||
+    ((board[1] == board[4])&&(board[4] == board[7]))||
+    ((board[2] == board[5])&&(board[5] == board[8]))||
+    ((board[0] == board[4])&&(board[4] == board[8]))||
+    ((board[2] == board[4])&&(board[4] == board[6]))
+   ) */ {
+    return true;
+  }else{
+    return false;
+  }
 
 }
