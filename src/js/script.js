@@ -2,10 +2,8 @@ const Player = ((name,character) => {
   return { name, character}
 });
 
-const GameData = (() =>{
-  let board = [null,null,null,null,null,null,null,null,null];
+  var board = [null,null,null,null,null,null,null,null,null];
 
-});
 
 const GameController = () => {
  let board = new GameData;
@@ -34,11 +32,29 @@ function setPlayers() {
 
   const player1 = Player(document.getElementById("name-player1").value,document.getElementById("char-player1").value)
   const player2 = Player(document.getElementById("name-player2").value,document.getElementById("char-player2").value)
-  console.log(player1);
-  console.log(player2);
+  
+  const firstTurn = decideTurn(player1, player2);
+  const playerData = `<p>Player1: ${player1.name}[${player1.character}]<br>
+                         Player2: ${player2.name}[${player2.character}]</p>`
+
+document.getElementsByClassName('player-data')[0].innerHTML = playerData;
 }
 
+let moveCount = 0;
+let turn;
 function decideTurn(player1, player2) {
-  let turn = [player1,player2];
-  return turn[Math.round(Math.random(0,1))]
+  let players = [player1,player2];
+  if(moveCount == 0){
+     turn =  players[Math.round(Math.random(0,1))];
+     return turn;
+  }else{
+    return (turn === player1)? player2 : player1;
+  }
+
+}
+
+function doMove(index, id) {
+document.getElementById(id).innerHTML = id;
+board[index] = id;
+moveCount++;
 }
