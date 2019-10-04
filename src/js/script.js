@@ -32,35 +32,3 @@ function setPlayers() {
 }
 
 
-function decideTurn(player1, player2) {
-  let players = [player1,player2];
-  if(moveCount == 0){
-     turn =  players[Math.round(Math.random(0,1))];
-     return turn;
-  }else{
-    return (turn == player1)? player2 : player1;
-  }
-
-}
-
-function doMove(index, id) {
-
-if (board[index] == null) {
-  turn = decideTurn(player1, player2);
-  board[index] = turn.character;
-  document.getElementById(id).innerHTML = turn.character;
-  moveCount++;
-  if (moveCount == 9){
-    alert("gameOver");
-  }
-}else{
-  alert("cell occupied");
-}
-
-
-}
-
-
-function checkWinning(){
-  
-}

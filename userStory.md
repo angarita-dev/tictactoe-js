@@ -9,3 +9,8 @@
 9. checkGamestatus()
 10. displayResult()
 11. switchTurns() -> 5.
+
+project setup
+gameboard-player init
+game-playing
+game-wining
