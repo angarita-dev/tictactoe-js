@@ -82,5 +82,6 @@ function gameWin() {
 }
 
 function resetBoard(){
-  board.forEach(b => b = null);
+  location.reload();
+
 }
