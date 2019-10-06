@@ -29,6 +29,7 @@ function setPlayers() {
                          Player2: ${player2.name}[${player2.character}]</p>`;
 
   document.getElementsByClassName('player-data')[0].innerHTML = playerData;
+  decideTurn(player1, player2);
 }
 
 
@@ -36,9 +37,12 @@ function decideTurn(player1, player2) {
   let players = [player1,player2];
   if(moveCount == 0){
      turn =  players[Math.round(Math.random(0,1))];
+     document.getElementById("turn-message").innerHTML = `${turn.name}'s turn`;
      return turn;
   }else{
-    return (turn == player1)? player2 : player1;
+    turn = (turn == player1)? player2 : player1;
+    document.getElementById("turn-message").innerHTML = `${turn.name}'s turn`;
+    return turn;
   }
 
 }
@@ -46,16 +50,18 @@ function decideTurn(player1, player2) {
 function doMove(index, id) {
 
 if (board[index] == null) {
-  turn = decideTurn(player1, player2);
-  board[index] = turn.character;
   document.getElementById(id).innerHTML = turn.character;
+  board[index] = turn.character;
+   moveCount++;
  if(gameWin()){
    alert(`${turn.name} WINS!!!`);
    resetBoard();
+   return;
  }
-  moveCount++;
+ turn = decideTurn(player1, player2);
+ 
   if (moveCount == 9){
-    alert("gameOver");
+    alert("GAME OVER: YOU HAVE A TIE!!");
     resetBoard();
   }
 }else{
