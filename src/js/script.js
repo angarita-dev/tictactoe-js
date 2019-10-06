@@ -25,8 +25,8 @@ function setPlayers() {
   player1 = makePlayer().player1; 
   player2 = makePlayer().player2;
 
-  const playerData = `<p>Player1: ${player1.name}[${player1.character}]<br>
-                         Player2: ${player2.name}[${player2.character}]</p>`;
+  const playerData = `<p>Player1: ${player1.name} Character: [${player1.character}]<br>
+                         Player2: ${player2.name} Character: [${player2.character}]</p>`;
 
   document.getElementsByClassName('player-data')[0].innerHTML = playerData;
   decideTurn(player1, player2);
@@ -54,18 +54,20 @@ if (board[index] == null) {
   board[index] = turn.character;
    moveCount++;
  if(gameWin()){
-   alert(`${turn.name} WINS!!!`);
-   resetBoard();
+  document.getElementById("win-message").innerHTML = `${turn.name} WINS!!!`;
+  document.getElementsByClassName("reset-game-btn")[0].style.display = 'block';
+   //resetBoard();
    return;
  }
  turn = decideTurn(player1, player2);
  
   if (moveCount == 9){
-    alert("GAME OVER: YOU HAVE A TIE!!");
-    resetBoard();
+    document.getElementById("win-message").innerHTML = `GAME OVER: YOU HAVE A TIE!!`;
+    document.getElementsByClassName("reset-game-btn")[0].style.display = 'block';
+   // resetBoard();
   }
 }else{
-  alert("cell occupied");
+  alert("cell occupied invalid move");
 }
 }
 

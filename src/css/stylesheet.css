@@ -6,7 +6,21 @@
     width:500px;
     display: none;
 }
+td{
+    width: 100px;
+    height:100px;
+    border: 2px solid lawngreen ;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    background-color: blue;
+    box-shadow: 2px 2px lightslategrey;
+}
 
+table{
+    width:600px;
+    padding: 100px;
+}
 .player-info-container{
     display:none;
     background-color: lightseagreen;
@@ -23,16 +37,7 @@
 
 }
 
-td{
-    width: 50px;
-    height:50px;
-    border: 2px solid lawngreen ;
-    text-align: center;
-}
 
-table{
-    width:160px;
-}
 
 .button-container{
     width: 400px;
@@ -46,6 +51,15 @@ table{
     border-radius: 50%;
     box-shadow: 2px 2px 4px purple;
 
+}
+.reset-game-btn{
+    border: none;
+    display: none;
+    width: 200px;
+    height: 50px;
+    background-color: rgb(230, 226, 38);
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px rgb(189, 30, 96);
 }
 
 .start-game-btn:hover{
@@ -63,7 +77,7 @@ table{
 
 body{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: 100vh;
 }
 
@@ -77,5 +91,29 @@ body{
 .header-text{
     color: white;
     margin-bottom: 100px;
+
+}
+
+.turn-message{
+    text-align: center;
+    margin-top: 100px;
+    color: blue;
+    font-style: italic;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.win-message{
+    text-align: center;
+    margin-top: 50px;
+    color: rgb(30, 255, 0);
+    font-style: italic;
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.player-data{
+    color: yellow;
+    font-size: 40px;
 
 }
