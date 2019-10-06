@@ -1,12 +1,26 @@
-
+*{
+    margin: 0;
+    padding: 0;
+}
 .game-container{
     width:500px;
-    margin: 100px auto;
     display: none;
 }
 
 .player-info-container{
     display:none;
+    background-color: lightseagreen;
+    width:400px;
+    padding:50px;
+    border-radius: 10px;
+}
+
+.player-info-container button{
+    margin-left: 100px;
+    margin-top:50px;
+    padding: 10px;
+    background-color: aqua;
+
 }
 
 td{
@@ -18,4 +32,50 @@ td{
 
 table{
     width:160px;
+}
+
+.button-container{
+    width: 400px;
+}
+
+.start-game-btn{
+    border: none;
+    width: 200px;
+    height: 50px;
+    background-color: green;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px purple;
+
+}
+
+.start-game-btn:hover{
+    transform: scale(1.2);
+    background-color: rgb(67, 109, 67);
+    box-shadow: 2px 2px 4px rgb(75, 7, 75);
+
+}
+
+.player-data{
+    width: 500px;
+    margin:0 auto;
+    
+}
+
+body{
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.left-section{
+    height: 100%;
+    background-color: brown;
+    padding: 50px;
+    width: 500px;
+}
+
+.header-text{
+    color: white;
+    margin-bottom: 100px;
+
 }
