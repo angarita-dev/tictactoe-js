@@ -12,21 +12,21 @@ const data = (() => {
       || (board[1] != null && board[1] === board[4] && board[4] === board[7])
       || (board[2] != null && board[2] === board[5] && board[5] === board[8])
       || (board[0] != null && board[0] === board[4] && board[4] === board[8])
-      || (board[2] != null && board[2] === board[4] && board[4] === board[6])){
+      || (board[2] != null && board[2] === board[4] && board[4] === board[6])) {
       return true;
     }
     return false;
-  }
-  const checkTile = (tile) => board[tile] === null;
-  const setMove = (index, character) => board[index] = character;
-  const emptyBoard = () => board = [null, null, null, null, null, null, null, null, null];
-  return { 
+  };
+  const checkTile = (tile) => (board[tile] === null);
+  const setMove = (index, character) => (board[index] = character);
+  const emptyBoard = () => (board = [null, null, null, null, null, null, null, null, null]);
+  return {
     board,
     gameWin,
     checkTile,
     setMove,
-    emptyBoard
-  }
+    emptyBoard,
+  };
 });
 
 const domController = (() => {
@@ -56,11 +56,11 @@ const domController = (() => {
     document.getElementsByClassName('game-buttons-container')[0].style.display = 'flex';
   };
   const displayTie = () => {
-    document.getElementById('win-message').innerHTML = `GAME OVER: YOU HAVE A TIE!!`;
+    document.getElementById('win-message').innerHTML = 'GAME OVER: YOU HAVE A TIE!!';
     document.getElementsByClassName('game-buttons-container')[0].style.display = 'flex';
   };
   const clearBoard = () => {
-    for (let i = 0; i < 9; i += 1){
+    for (let i = 0; i < 9; i += 1) {
       document.getElementById(`${i}`).innerHTML = null;
     }
   };
@@ -73,7 +73,7 @@ const domController = (() => {
     document.getElementsByClassName('game-buttons-container')[0].style.display = 'none';
   };
   const getPlayerNames = () => [document.getElementById('name-player1').value, document.getElementById('name-player2').value];
-  const getPlayerChars = () => [document.getElementById('char-player1').value, document.getElementById('char-player2').value];  
+  const getPlayerChars = () => [document.getElementById('char-player1').value, document.getElementById('char-player2').value];
   const hidePlayers = () => {
     document.getElementsByClassName('player-data')[0].innerHTML = '';
   };
@@ -88,8 +88,8 @@ const domController = (() => {
     getPlayerNames,
     getPlayerChars,
     resetBoard,
-    hidePlayers
-  }
+    hidePlayers,
+  };
 });
 
 const gameController = (() => {
@@ -104,7 +104,7 @@ const gameController = (() => {
     players = [Player(playerNames[0], playerChars[0]), Player(playerNames[1], playerChars[1])];
   };
   const decideTurn = () => {
-    if (moveCount === 0){
+    if (moveCount === 0) {
       turn = players[Math.round(Math.random(0, 1))];
       display.displayTurn(turn.name);
     } else {
@@ -128,7 +128,8 @@ const gameController = (() => {
         display.displayWin(turn.name);
         display.clearBoard();
         return;
-      } else if (moveCount === 9) {
+      }
+      if (moveCount === 9) {
         display.displayTie();
         display.clearBoard();
         return;
@@ -154,8 +155,8 @@ const gameController = (() => {
     setPlayers,
     doMove,
     resetBoard,
-    newGame
-  }
+    newGame,
+  };
 });
 
 const game = gameController();
