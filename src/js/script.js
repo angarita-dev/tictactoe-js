@@ -1,6 +1,4 @@
-const Player = ((name, character) => {
-  return { name, character }
-});
+const Player = ((name, character) => ( { name, character } ));
 
 const data = (() => {
   let board = [null, null, null, null, null, null, null, null, null];
@@ -19,7 +17,10 @@ const data = (() => {
   };
   const checkTile = (tile) => (board[tile] === null);
   const setMove = (index, character) => (board[index] = character);
-  const emptyBoard = () => (board = [null, null, null, null, null, null, null, null, null]);
+  const emptyBoard = () => {
+    board = [null, null, null, null, null, null, null, null, null];
+    return;
+  };
   return {
     board,
     gameWin,
