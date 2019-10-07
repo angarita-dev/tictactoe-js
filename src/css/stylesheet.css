@@ -43,16 +43,16 @@ table{
 
 .start-game-btn{
     background-color: green;
-    border-radius: 50%;
     border: none;
+    border-radius: 50%;
     box-shadow: 2px 2px 4px purple;
     height: 50px;
     width: 200px;
 }
 .game-btn{
     background-color: rgb(230, 226, 38);
-    border-radius: 50%;
     border: none;
+    border-radius: 50%;
     box-shadow: 2px 2px 4px rgb(189, 30, 96);
     display: block;
     height: 50px;
