@@ -1,7 +1,3 @@
-let turn;
-let moveCount = 0;
-
-
 const Player = ((name,character) => {
   return { name, character}
 });
@@ -36,15 +32,16 @@ const data = (() => {
   return { board, gameWin, checkTile, setMove, emptyBoard }
 });
 
-const gameBoard = data();
 const domController = (() =>{
   const getPlayerInfo = () => {
     document.getElementsByClassName("start-game-btn")[0].style.display = 'none';
     document.getElementsByClassName("player-info-container")[0].style.display  = 'block';
   }
   const toggleBoard = () => {
-    document.getElementsByClassName("player-info-container")[0].style.display = 'none';
-    document.getElementsByClassName("game-container")[0].style.display = 'block';
+    let playerInfoContainer = document.getElementsByClassName("player-info-container")[0];
+    let gameContainer = document.getElementsByClassName("game-container")[0];
+    playerInfoContainer.style.display = (playerInfoContainer.style.display == 'block') ? 'none' : 'block';
+    gameContainer.style.display = (gameContainer.style.display == 'block') ? 'none' : 'block';
   }
   const displayPlayers = (player1, player2) => {
     const playerData = `<p>Player1: ${player1.name} Character: [${player1.character}]<br>
@@ -94,7 +91,6 @@ const domController = (() =>{
            displayTurn,
            displayWin,
            displayTie,
-           clearBoard,
            getPlayerNames,
            getPlayerChars,
            resetBoard,
@@ -102,61 +98,67 @@ const domController = (() =>{
           };
 });
 
-function makePlayer() {
-  let playerNames = domController().getPlayerNames();
-  let playerChars = domController().getPlayerChars();
-  return {
-    player1: Player(playerNames[0], playerChars[0]),
-    player2: Player(playerNames[1], playerChars[1]),
-  };
-}
-
-function setPlayers() {
-  domController().getPlayerInfo()
-  domController().toggleBoard();
-  player1 = makePlayer().player1;
-  player2 = makePlayer().player2;
-
-  domController().displayPlayers(player1,player2);
-  
-  decideTurn(player1, player2);
-}
-
-
-function decideTurn(player1, player2) {
-  let players = [player1,player2];
-  if(moveCount == 0){
-    turn =  players[Math.round(Math.random(0,1))];
-    domController().displayTurn(turn.name);
-  } else{
-    turn = (turn == player1)? player2 : player1;
-    domController().displayTurn(turn.name);
+const gameController = (() => {
+  const gameBoard = data();
+  const display = domController();
+  let turn;
+  let moveCount = 0;
+  let players = [];
+  const makePlayer = () => {
+    let playerNames = display.getPlayerNames();
+    let playerChars = display.getPlayerChars();
+    players = [Player(playerNames[0], playerChars[0]),Player(playerNames[1], playerChars[1])];
   }
-  return turn;
-}
-
-function doMove(index, id) {
-
-  if (gameBoard.checkTile()) {
-    domController().displayCharacter(id,turn.character);
-    gameBoard.setMove(index,turn.character);
-    moveCount++;
-    if(gameBoard.gameWin()){
-      console.log('in win')
-      domController().displayWin();
-      domController.clearBoard();
-      return
-    } else if(moveCount == 9){
-      domController().displayTie();
-      domController.clearBoard();
-      return
+  const decideTurn = () => {
+    if(moveCount == 0){
+      turn = players[Math.round(Math.random(0,1))];
+      display.displayTurn(turn.name);
+    } else{
+      turn = (turn == players[0])? players[1] : players[0];
+      display.displayTurn(turn.name);
     }
-    turn = decideTurn(player1, player2);
-  } else{
-    alert("cell occupied invalid move");
   }
-}
+  const setPlayers = () => {
+    makePlayer();
+    display.getPlayerInfo()
+    display.toggleBoard();
+  
+    display.displayPlayers(...players);
+    
+    decideTurn(players);
+  }
+  const doMove = (index, id) => {
+    if (gameBoard.checkTile(index)) {
+      display.displayCharacter(id,turn.character);
+      gameBoard.setMove(index,turn.character);
+      moveCount++;
+      if(gameBoard.gameWin()){
+        display.displayWin(turn.name);
+        display.clearBoard();
+        return
+      } else if(moveCount == 9){
+        display.displayTie();
+        display.clearBoard();
+        return
+      }
+      decideTurn(players);
+    }
+  }
+  const resetBoard = () => {
+    gameBoard.emptyBoard();
+    display.resetBoard();
+    moveCount = 0;
+    decideTurn();
+  }
+  const newGame = () => {
+    moveCount = 0;
+    gameBoard.emptyBoard();
+    display.resetBoard();
+    display.hidePlayers();
+    display.toggleBoard();
+    display.getPlayerInfo();
+  }
+  return { setPlayers, doMove, resetBoard, newGame }
+});
 
-function resetBoard(){
-  location.reload();
-}
+let game = gameController();
