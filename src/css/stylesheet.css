@@ -1,89 +1,84 @@
-*{
+body {
     margin: 0;
     padding: 0;
 }
+
 .game-container{
-    width:500px;
     display: none;
+    width:500px;
 }
 td{
-    width: 100px;
-    height:100px;
+    background-color: blue;
     border: 2px solid lawngreen ;
-    text-align: center;
+    box-shadow: 2px 2px lightslategrey;
     color: white;
     font-size: 50px;
-    background-color: blue;
-    box-shadow: 2px 2px lightslategrey;
+    height:100px;
+    text-align: center;
+    width: 100px;
 }
 
 table{
-    width:600px;
     padding: 100px;
+    width:600px;
 }
 .player-info-container{
-    display:none;
     background-color: lightseagreen;
-    width:400px;
-    padding:50px;
     border-radius: 10px;
+    display:none;
+    padding:50px;
+    width:400px;
 }
 
 .player-info-container button{
+    background-color: aqua;
     margin-left: 100px;
     margin-top:50px;
     padding: 10px;
-    background-color: aqua;
-
 }
-
-
 
 .button-container{
     width: 400px;
 }
 
 .start-game-btn{
-    border: none;
-    width: 200px;
-    height: 50px;
     background-color: green;
     border-radius: 50%;
+    border: none;
     box-shadow: 2px 2px 4px purple;
-
+    height: 50px;
+    width: 200px;
 }
 .game-btn{
-    border: none;
-    display: block;
-    width: 200px;
-    height: 50px;
     background-color: rgb(230, 226, 38);
     border-radius: 50%;
+    border: none;
     box-shadow: 2px 2px 4px rgb(189, 30, 96);
+    display: block;
+    height: 50px;
+    width: 200px;
 }
 
 .start-game-btn:hover{
-    transform: scale(1.2);
     background-color: rgb(67, 109, 67);
     box-shadow: 2px 2px 4px rgb(75, 7, 75);
-
+    transform: scale(1.2);
 }
 
-.player-data{
+.player-data {
+    margin: 0 auto;
     width: 500px;
-    margin:0 auto;
-    
 }
 
 body{
     display: flex;
-    justify-content: flex-start;
     height: 100vh;
+    justify-content: flex-start;
 }
 
 .left-section{
-    height: 100%;
     background-color: brown;
+    height: 100%;
     padding: 50px;
     width: 500px;
 }
@@ -94,21 +89,21 @@ body{
 }
 
 .turn-message{
-    text-align: center;
-    margin-top: 100px;
     color: blue;
-    font-style: italic;
     font-size: 30px;
+    font-style: italic;
     font-weight: bold;
+    margin-top: 100px;
+    text-align: center;
 }
 
 .win-message{
-    text-align: center;
-    margin-top: 50px;
     color: rgb(30, 255, 0);
-    font-style: italic;
     font-size: 80px;
+    font-style: italic;
     font-weight: bold;
+    margin-top: 50px;
+    text-align: center;
 }
 
 .player-data{
