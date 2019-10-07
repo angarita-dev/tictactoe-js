@@ -1,27 +1,40 @@
 let turn;
 let moveCount = 0;
-var board = [null,null,null,null,null,null,null,null,null];
+const board = [null,null,null,null,null,null,null,null,null];
 const Player = ((name,character) => {
   return { name, character}
 });
 
   
 function getPlayerInfo() {
-  document.getElementsByClassName("start-game-btn")[0].style.display = 'none';
-  document.getElementsByClassName("player-info-container")[0].style.display = 'block';
+  domController().startBtn.display = 'none';
+  domController().playerGet.display  = 'block';
+  
+}
+
+const domController = () =>{
+  return {
+    startBtn: document.getElementsByClassName("start-game-btn")[0].style,
+    playerGet: document.getElementsByClassName("player-info-container")[0].style,
+    playerName: [document.getElementById("name-player1").value, document.getElementById("name-player2").value],
+    playerCha: [document.getElementById("char-player1").value, document.getElementById("char-player2").value],
+    displayPlayers: document.getElementsByClassName("player-info-container")[0].style,
+    displayGame: document.getElementsByClassName("game-container")[0].style
+  };
 }
 
 function makePlayer() {
   return {
-    player1: Player(document.getElementById("name-player1").value,document.getElementById("char-player1").value),
-    player2: Player(document.getElementById("name-player2").value,document.getElementById("char-player2").value)
+    player1: Player(domController().playerName[0], domController().playerCha[0]),
+    player2: Player(domController().playerName[1], domController().playerCha[1]),
   };
 }
 
 
 function setPlayers() {
-  document.getElementsByClassName("player-info-container")[0].style.display = 'none';
-  document.getElementsByClassName("game-container")[0].style.display = 'block';
+  domController().displayPlayers.display = 'none';
+  domController().displayGame.display = 'block';
+ 
   player1 = makePlayer().player1; 
   player2 = makePlayer().player2;
 
