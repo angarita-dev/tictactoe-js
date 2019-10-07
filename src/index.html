@@ -24,7 +24,7 @@
                   <input type="text" id="name-player2" placeholder='Insert player 2 name'>
                   <input type="text" id="char-player2" placeholder='Insert player 2 character'>
                 </div>
-                <button onclick="setPlayers()">Enter player info</button>
+                <button onclick="game.setPlayers()">Enter player info</button>
               </div>
             </div>
 
@@ -35,26 +35,28 @@
           
   </div>
   <div class="right-section">
-   
         <div class="game-container">
             <div class="turn-message" id="turn-message"> </div>
             <div class="win-message" id="win-message"> </div>
-            <button class="reset-game-btn" onclick='resetBoard()'>Reset Game</button>
+            <div class="game-buttons-container">
+              <button class="game-btn" onclick='game.resetBoard()'>Re-match</button>
+              <button class="game-btn" onclick='game.newGame()'>New Players</button>
+            </div>
           <table>
             <tr>
-              <td id="0" onclick="doMove(0,'0')"></td>
-              <td id="1" onclick="doMove(1,'1')"></td>
-              <td id="2" onclick="doMove(2,'2')"></td>
+              <td id="0" onclick="game.doMove(0,'0')"></td>
+              <td id="1" onclick="game.doMove(1,'1')"></td>
+              <td id="2" onclick="game.doMove(2,'2')"></td>
             </tr>
             <tr>
-              <td id="3" onclick="doMove(3,'3')"></td>
-              <td id="4" onclick="doMove(4,'4')"></td>
-              <td id="5" onclick="doMove(5,'5')"></td>
+              <td id="3" onclick="game.doMove(3,'3')"></td>
+              <td id="4" onclick="game.doMove(4,'4')"></td>
+              <td id="5" onclick="game.doMove(5,'5')"></td>
           </tr>
           <tr>
-            <td id="6" onclick="doMove(6,'6')"></td>
-            <td id="7" onclick="doMove(7,'7')"></td>
-            <td id="8" onclick="doMove(8,'8')"></td>
+            <td id="6" onclick="game.doMove(6,'6')"></td>
+            <td id="7" onclick="game.doMove(7,'7')"></td>
+            <td id="8" onclick="game.doMove(8,'8')"></td>
             </tr>
           </table>
         </div>
