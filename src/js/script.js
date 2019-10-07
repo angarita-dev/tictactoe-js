@@ -1,35 +1,32 @@
-const Player = ((name,character) => {
-  return { name, character}
+const Player = ((name, character) => {
+  return { name, character }
 });
 
 const data = (() => {
-  let board = [null,null,null,null,null,null,null,null,null];
+  let board = [null, null, null, null, null, null, null, null, null];
   const gameWin = () => {
-    if((board[0] != null && board[0] == board[1] && board[1] == board[2]) ||
-      (board[3] != null && board[3] == board[4] && board[4] == board[5]) ||
-      (board[6] != null && board[6] == board[7] && board[7] == board[8]) ||
-      (board[0] != null && board[0] == board[3] && board[3] == board[6]) ||
-      (board[1] != null && board[1] == board[4] && board[4] == board[7]) ||
-      (board[2] != null && board[2] == board[5] && board[5] == board[8]) ||
-      (board[0] != null && board[0] == board[4] && board[4] == board[8]) ||
-      (board[2] != null && board[2] == board[4] && board[4] == board[6]) 
-      )
-      {
+    if ((board[0] != null && board[0] === board[1] && board[1] === board[2])
+      || (board[3] != null && board[3] === board[4] && board[4] === board[5])
+      || (board[6] != null && board[6] === board[7] && board[7] === board[8])
+      || (board[0] != null && board[0] === board[3] && board[3] === board[6])
+      || (board[1] != null && board[1] === board[4] && board[4] === board[7])
+      || (board[2] != null && board[2] === board[5] && board[5] === board[8])
+      || (board[0] != null && board[0] === board[4] && board[4] === board[8])
+      || (board[2] != null && board[2] === board[4] && board[4] === board[6])){
       return true;
-     }else{
-      return false;
     }
+    return false;
   }
-  const checkTile = (tile) => {
-    return board[tile] == null;
+  const checkTile = (tile) => board[tile] === null;
+  const setMove = (index, character) => board[index] = character;
+  const emptyBoard = () => board = [null, null, null, null, null, null, null, null, null];
+  return { 
+    board,
+    gameWin,
+    checkTile,
+    setMove,
+    emptyBoard
   }
-  const setMove = (index,character) => {
-    board[index] = character
-  }
-  const emptyBoard = () => {
-    board = [null,null,null,null,null,null,null,null,null];
-  }
-  return { board, gameWin, checkTile, setMove, emptyBoard }
 });
 
 const domController = (() =>{
@@ -40,8 +37,8 @@ const domController = (() =>{
   const toggleBoard = () => {
     let playerInfoContainer = document.getElementsByClassName("player-info-container")[0];
     let gameContainer = document.getElementsByClassName("game-container")[0];
-    playerInfoContainer.style.display = (playerInfoContainer.style.display == 'block') ? 'none' : 'block';
-    gameContainer.style.display = (gameContainer.style.display == 'block') ? 'none' : 'block';
+    playerInfoContainer.style.display = (playerInfoContainer.style.display === 'block') ? 'none' : 'block';
+    gameContainer.style.display = (gameContainer.style.display === 'block') ? 'none' : 'block';
   }
   const displayPlayers = (player1, player2) => {
     const playerData = `<p>Player1: ${player1.name} Character: [${player1.character}]<br>
@@ -110,11 +107,11 @@ const gameController = (() => {
     players = [Player(playerNames[0], playerChars[0]),Player(playerNames[1], playerChars[1])];
   }
   const decideTurn = () => {
-    if(moveCount == 0){
+    if(moveCount === 0){
       turn = players[Math.round(Math.random(0,1))];
       display.displayTurn(turn.name);
     } else{
-      turn = (turn == players[0])? players[1] : players[0];
+      turn = (turn === players[0])? players[1] : players[0];
       display.displayTurn(turn.name);
     }
   }
@@ -136,7 +133,7 @@ const gameController = (() => {
         display.displayWin(turn.name);
         display.clearBoard();
         return
-      } else if(moveCount == 9){
+      } else if(moveCount === 9){
         display.displayTie();
         display.clearBoard();
         return
