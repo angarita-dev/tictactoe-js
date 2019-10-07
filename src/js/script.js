@@ -16,7 +16,8 @@ const data = (() => {
     return false;
   };
   const checkTile = (tile) => {
-    return (board[tile] === null);
+    const result = (board[tile] === null);
+    return result;
   };
   const setMove = (index, character) => {
     board[index] = character;
