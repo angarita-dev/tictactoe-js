@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.game-container{
+    display: none;
+    width:500px;
+}
+td{
+    background-color: blue;
+    border: 2px solid lawngreen ;
+    box-shadow: 2px 2px lightslategrey;
+    color: white;
+    font-size: 50px;
+    height:100px;
+    text-align: center;
+    width: 100px;
+}
+td:hover{
+    background-color:  lawngreen ;
+}
+td:active{
+  transform: scale(0.9);
+}
+
+table{
+    padding: 100px;
+    width:600px;
+}
+.player-info-container{
+    background-color: lightseagreen;
+    border-radius: 10px;
+    display:none;
+    padding:50px;
+    width:400px;
+}
+
+.player-info-container button{
+    background-color: aqua;
+    margin-left: 100px;
+    margin-top:50px;
+    padding: 10px;
+}
+
+.button-container{
+    width: 400px;
+}
+
+.start-game-btn{
+    background-color: green;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px purple;
+    height: 50px;
+    width: 200px;
+}
+.game-btn{
+    background-color: rgb(230, 226, 38);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px rgb(189, 30, 96);
+    display: block;
+    height: 50px;
+    width: 200px;
+}
+
+.start-game-btn:hover{
+    background-color: rgb(67, 109, 67);
+    box-shadow: 2px 2px 4px rgb(75, 7, 75);
+    transform: scale(1.2);
+}
+
+.player-data {
+    margin: 0 auto;
+    width: 500px;
+}
+
+body{
+    display: flex;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+.left-section{
+    background-color: brown;
+    min-height: 100vh;
+    padding: 50px;
+    width: 500px;
+}
+
+.header-text{
+    color: white;
+    margin-bottom: 100px;
+}
+
+.turn-message{
+    color: blue;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.win-message{
+    color: rgb(30, 255, 0);
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.player-data{
+    color: yellow;
+    font-size: 40px;
+}
+
+.game-buttons-container {
+    display: none;
+    flex-direction: row;
+    justify-content: space-around;
+}
