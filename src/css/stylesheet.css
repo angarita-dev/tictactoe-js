@@ -17,6 +17,12 @@ td{
     text-align: center;
     width: 100px;
 }
+td:hover{
+    background-color:  lawngreen ;
+}
+td:active{
+  transform: scale(0.9);
+}
 
 table{
     padding: 100px;
